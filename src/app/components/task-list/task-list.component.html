@@ -1,0 +1,38 @@
+<form>
+    <input 
+        type="text" 
+        class="form-control" 
+        placeholder="Task title" 
+        name="newTaskTitle" 
+        [(ngModel)]="newTaskTitle" />
+    <label for="newTaskIsCompleted">Is completed?</label>
+    <input 
+        name="newTaskIsCompleted"
+        type="checkbox" 
+        (change)="handleInitialIsCompleted($event)" />
+    <button 
+        class="btn btn-primary" 
+        type="button" 
+        (click)="handleAddNewTask()">
+        Add new task
+    </button>
+</form>
+<ul class="task-list-ul">
+    @for (taskItem of taskList(); track taskItem.id) {
+    <li class="task-list-item">
+        <button 
+            type="button" 
+            class="btn btn-danger" 
+            (click)="handleRemoveTask($event, taskItem.id)">
+            Remove task
+        </button>
+        <input 
+            type="checkbox"
+            [checked]="taskItem.isCompleted" 
+            (change)="handleIsCompleted($event, taskItem.id)" />
+        <span class="task-list-task-title">{{ taskItem.title }}</span>
+    </li>
+    } @empty {
+    <li>Empty list of users</li>
+    }
+</ul>

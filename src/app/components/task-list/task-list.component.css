@@ -1,0 +1,12 @@
+.task-list-ul {
+    list-style-type: none;
+}
+
+.task-list-item {
+    padding-top: 10px;
+    margin-bottom: 10px;
+}
+
+.task-list-task-title {
+    margin-left: 10px;
+}
